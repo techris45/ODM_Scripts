@@ -5,20 +5,20 @@ cd ../../..
 
 cd /code
 git pull origin master
+python3 -m pip install -r requirements.txt -U
 sudo bash configure.sh reinstall
 
 cd /www
 git checkout package.json
 git pull origin master
 npm install
+python3 -m pip install -r requirements.txt -U
 
 cd /webodm
 git checkout package.json
 git pull origin master
-
-
 npm install
-python3 -m pip install -r requirements.txt
+python3 -m pip install -r requirements.txt -U
 webpack --mode production
 python3 manage.py collectstatic --noinput
 python3 manage.py migrate

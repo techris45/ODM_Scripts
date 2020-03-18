@@ -10,6 +10,7 @@ laspy
 loky
 networkx
 numpy
+opencv-contrib-python-headless
 Pillow
 psutil
 pyodm

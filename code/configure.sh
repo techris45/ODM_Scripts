@@ -33,6 +33,7 @@ install() {
                          swig \
                          python3-wheel \
                          libboost-log-dev
+                         libusb-1.0-0-dev
 
     echo "Getting CMake 3.1 for MVS-Texturing"
     apt install -y software-properties-common python3-software-properties
@@ -58,10 +59,12 @@ install() {
                          liblapack-dev \
                          libeigen3-dev \
                          libvtk6-dev
+                         libvtk6-qt-dev
                          libvtk7-dev
+                         libvtk7-qt-dev
 
     echo "Removing libdc1394-22-dev due to python opencv issue"
-    #apt remove libdc1394-22-dev
+    apt remove libdc1394-22-dev
 
     echo "Installing OpenSfM Dependencies"
     apt install -y -qq libgoogle-glog-dev \

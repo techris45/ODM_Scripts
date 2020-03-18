@@ -20,3 +20,4 @@ cryptography
 pyOpenSSL
 scikit-learn
 laspy
+gdal

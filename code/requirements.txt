@@ -21,3 +21,4 @@ pyOpenSSL
 scikit-learn
 laspy
 gdal
+appsettings

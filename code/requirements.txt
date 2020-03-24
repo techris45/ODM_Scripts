@@ -12,14 +12,17 @@ loky
 networkx
 numpy
 opencv-contrib-python-headless
+pcl-py
 Pillow
 psutil
 pyodm
 pyOpenSSL
 pyproj
+python-pcl
 PyYAML
 rasterio
 repoze.lru
+scikit-build
 scikit-learn
 scipy
 xmltodict

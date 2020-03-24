@@ -11,13 +11,16 @@ install() {
     export PYTHONPATH=$RUNPATH/SuperBuild/install/lib/python2.7/dist-packages:$RUNPATH/SuperBuild/src/opensfm:$PYTHONPATH
     export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$RUNPATH/SuperBuild/install/lib
 
+    #Remove/reinstall python3-pip because apparently it is breaking
+    #apt-get remove --y python3-pip && apt-get install --y python3-pip
+
     ## Before installing
     echo "Updating the system"
     #add-apt-repository -y ppa:ubuntugis/ubuntugis-unstable
-    apt update
+    apt-get update
 
     echo "Installing Required Requisites"
-    apt install -y -qq build-essential \
+    apt-get install -y -qq build-essential \
                          git \
                          cmake \
                          python3-pip \
@@ -34,15 +37,18 @@ install() {
                          python3-wheel \
                          libboost-log-dev
                          libusb-1.0-0-dev
+                         libpcl-dev
+                         libopencv-dev
+                         libopencv-apps-dev
 
     echo "Getting CMake 3.1 for MVS-Texturing"
-    apt install -y software-properties-common python3-software-properties
+    apt-get install -y software-properties-common python3-software-properties
     #add-apt-repository -y ppa:george-edison55/cmake-3.x
-    apt update -y
-    apt install -y --only-upgrade cmake
+    apt-get update -y
+    apt-get install -y --only-upgrade cmake
 
     echo "Installing OpenCV Dependencies"
-    apt install -y -qq libgtk-3-dev \
+    apt-get install -y -qq libgtk-3-dev \
                          libavcodec-dev \
                          libavformat-dev \
                          libswscale-dev \
@@ -64,10 +70,10 @@ install() {
                          libvtk7-qt-dev
 
     echo "Removing libdc1394-22-dev due to python opencv issue"
-    apt remove libdc1394-22-dev
+    apt-get remove libdc1394-22-dev
 
     echo "Installing OpenSfM Dependencies"
-    apt install -y -qq libgoogle-glog-dev \
+    apt-get install -y -qq libgoogle-glog-dev \
                          libsuitesparse-dev \
                          libboost-filesystem-dev \
                          libboost-iostreams-dev \
@@ -80,7 +86,7 @@ install() {
 
     # Fix:  /usr/local/lib/python2.7/dist-packages/requests/__init__.py:83: RequestsDependencyWarning: Old version of cryptography ([1, 2, 3]) may cause slowdown.
     pip install --upgrade cryptography
-    python -m easy_install --upgrade pyOpenSSL
+    python3 -m easy_install --upgrade pyOpenSSL
 
     echo "Compiling SuperBuild"
     cd ${RUNPATH}/SuperBuild
